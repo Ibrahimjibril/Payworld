@@ -430,3 +430,15 @@ a.cp-stat{display:block}
 .bk-err{color:#ef4444;font-size:13px}
 .bk-add{border:2px dashed var(--line);border-radius:18px;background:transparent;color:var(--muted);font:inherit;font-weight:600;min-height:56px;cursor:pointer;width:100%}
 .bk-bar{position:sticky;bottom:10px;z-index:4}
+
+/* ===== Payworld navy theme ===== */
+:root{color-scheme:dark;--bg:#050b1f;--card:#0b1736;--ink:#eaf1ff;--muted:#8fa3c7;--line:#1b2d5c;--brand:#3b82f6;--on-brand:#fff;--accent:#ffc533;--soft:#10224d}
+body{background:radial-gradient(900px 500px at 0% -5%,rgba(37,99,235,.28),transparent 60%),radial-gradient(700px 400px at 100% 0%,rgba(124,58,237,.18),transparent 60%),var(--bg);background-attachment:fixed}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01)),var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.cp-stat{border:1px solid rgba(120,160,255,.2)!important;border-radius:20px!important;background:linear-gradient(135deg,#0f2f7a,#0b1d4d)!important;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.cp-stat.green{background:linear-gradient(135deg,#0c5a4e,#0a2f33)!important}
+.cp-stat.lav,.cp-stat.purple,.cp-stat.violet{background:linear-gradient(135deg,#4a2bb5,#1f1654)!important}
+.cp-stat.orange{background:linear-gradient(135deg,#7a4a0a,#2f1d08)!important}
+.cp-ic{background:rgba(255,255,255,.14)!important;border-radius:50%!important}
+.btn.primary,.cp-btn.primary{background:linear-gradient(90deg,#ffb400,#ffcf4a)!important;color:#1a1200!important;border:0!important;font-weight:800}
+.pill{background:var(--soft);color:#9cc2ff}

@@ -21,7 +21,7 @@ const config: any = {
     createOnLogin: "users-without-wallets",
     ethereum: { createOnLogin: "users-without-wallets" },
   },
-  appearance: { theme: "light", accentColor: "#0E7C66" },
+  appearance: { theme: "dark", accentColor: "#3B82F6" },
   defaultChain: arcChain,
   supportedChains: [arcChain],
 };
