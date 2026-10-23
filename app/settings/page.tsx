@@ -68,7 +68,7 @@ export default function Settings() {
         <div className="cp-panel">
           <div className="cp-ph"><h2>{t("sWallet")}</h2></div>
           <div className="cp-kv"><span>{t("sAddress")}</span><b style={{ fontSize: 13 }}>{addr || "—"}</b></div>
-          <div className="cp-kv"><span>{t("rNet")}</span><b>Tempo Mainnet</b></div>
+          <div className="cp-kv"><span>{t("rNet")}</span><b>Arc Mainnet</b></div>
           <div className="cp-kv"><span>{t("rAsset")}</span><b>USDC · EURC</b></div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 14 }}>
             {addr && (
@@ -76,7 +76,7 @@ export default function Settings() {
                 <Icon name={copied ? "check" : "copy"} size={16} />{copied ? t("sCopied") : t("sCopyAddr")}
               </button>
             )}
-            {addr && <a className="cp-btn" href={`https://explore.mainnet.tempo.xyz/address/${addr}`} target="_blank" rel="noreferrer">{t("rExplorer")}</a>}
+            {addr && <a className="cp-btn" href={`https://explorer.arc.io/address/${addr}`} target="_blank" rel="noreferrer">{t("rExplorer")}</a>}
           </div>
         </div>
       </div>

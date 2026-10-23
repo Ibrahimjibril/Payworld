@@ -179,7 +179,7 @@ export default function Activity() {
               {sel.memo && <div className="cp-kv"><span>{t("rMsg")}</span><b>“{sel.memo}”</b></div>}
               <div className="cp-kv"><span>{t("rDate")}</span><b>{new Date(sel.createdAt).toLocaleString()}</b></div>
               <div className="cp-kv"><span>{t("rAsset")}</span><b>{sel.token}</b></div>
-              <div className="cp-kv"><span>{t("rNet")}</span><b>Tempo</b></div>
+              <div className="cp-kv"><span>{t("rNet")}</span><b>Arc</b></div>
               {sel.claimable && <div className="cp-kv"><span>{t("rClaim")}</span><b>{sel.claimStatus === "CLAIMED" ? t("rClaimed") : sel.claimStatus === "REFUNDED" ? "Returned to you" : sel.claimStatus === "REFUNDING" ? "Returning…" : t("rWaiting")}</b></div>}
               {sel.claimable && sel.expiresAt && !["CLAIMED", "REFUNDED"].includes(String(sel.claimStatus)) && <div className="cp-kv"><span>Expires</span><b>{new Date(sel.expiresAt).toLocaleDateString()}</b></div>}
               <div className="cp-kv"><span>{t("rTx")}</span><b>{sel.txHash.slice(0, 10)}...{sel.txHash.slice(-6)}</b></div>

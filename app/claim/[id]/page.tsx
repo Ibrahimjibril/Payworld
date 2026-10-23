@@ -32,7 +32,7 @@ export default async function Claim({ params }: { params: Promise<{ id: string }
       <div className="amt">${amount}</div>
       <p className="small">From @{p.username}</p>
       {p.memo && <p className="lead">“{p.memo}”</p>}
-      {p.status !== "CONFIRMED" && <p className="small">This payment is still being confirmed on Tempo.</p>}
+      {p.status !== "CONFIRMED" && <p className="small">This payment is still being confirmed on Arc.</p>}
 
       {refunded || expired ? (
         <p className="lead">This claim link has expired. The money {refunded ? "was returned" : "is being returned"} to the sender.</p>

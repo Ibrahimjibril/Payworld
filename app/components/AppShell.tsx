@@ -149,7 +149,7 @@ export default function AppShell({ children }: { children: ReactNode; badge?: nu
             {unread > 0 && <span className="cp-badge">{unread > 9 ? "9+" : unread}</span>}
           </button>
           <button className="cp-iconbtn" aria-label="Toggle theme" onClick={toggle}><Icon name="moon" /></button>
-          <a className="cp-pill cp-hide-sm" href="https://explore.mainnet.tempo.xyz" target="_blank" rel="noreferrer">
+          <a className="cp-pill cp-hide-sm" href="https://explorer.arc.io" target="_blank" rel="noreferrer">
             <img src="/tempo-icon.svg" alt="" width={20} height={20} style={{ borderRadius: 6 }} />{t("tempoNet")}<Icon name="chevR" size={16} />
           </a>
 
