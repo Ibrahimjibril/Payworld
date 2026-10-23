@@ -1,5 +1,4 @@
 export const CHAIN_ID = Number(process.env.NEXT_PUBLIC_ARC_CHAIN_ID || "5042");
-export const OUSD_ADDRESS = "0x20c0" + "0".repeat(20) + "6a37da5c996874be";
 
 export const isAddress = (s: string) => /^0x[0-9a-fA-F]{40}$/.test(s);
 

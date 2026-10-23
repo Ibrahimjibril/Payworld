@@ -78,7 +78,7 @@ export default function Send() {
     });
     api("/api/balance").then((r) => r.json()).then((d) => {
       const m: Record<string, string> = {};
-      let best = "OUSD";
+      let best = "USDC";
       let hi = BigInt(-1);
       for (const x of d.tokens || []) {
         m[x.symbol] = x.balance;

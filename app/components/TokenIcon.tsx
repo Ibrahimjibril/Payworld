@@ -1,4 +1,4 @@
-const FILES: Record<string, string> = { USDT: "usdt", USDC: "usdc", OUSD: "ousd", pathUSD: "pathusd" };
+const FILES: Record<string, string> = { USDC: "usdc", EURC: "eurc" };
 
 export default function TokenIcon({ symbol, size = 28 }: { symbol: string; size?: number }) {
   const f = FILES[symbol];

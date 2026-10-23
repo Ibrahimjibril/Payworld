@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { usePrivy, useWallets } from "@privy-io/react-auth";
-import { useSendTransaction } from "@privy-io/react-auth/tempo";
+import { useSendTransaction } from "@privy-io/react-auth";
 import Loader from "@/app/components/Loader";
 import BackButton from "@/app/components/BackButton";
 import TokenPicker from "@/app/components/TokenPicker";
@@ -47,7 +47,7 @@ export default function BulkSend() {
 
   const [me, setMe] = useState<{ wallet_address: string | null } | null>(null);
   const [bals, setBals] = useState<Record<string, string>>({});
-  const [tok, setTok] = useState("OUSD");
+  const [tok, setTok] = useState("USDC");
   const nextId = useRef(3);
   const [rows, setRows] = useState<In[]>([{ id: 1, to: "", amount: "", note: "" }, { id: 2, to: "", amount: "", note: "" }]);
   const [look, setLook] = useState<Record<string, Look>>({});
@@ -79,7 +79,7 @@ export default function BulkSend() {
     });
     api("/api/balance").then((r) => r.json()).then((d) => {
       const m: Record<string, string> = {};
-      let best = "OUSD";
+      let best = "USDC";
       let hi = BigInt(-1);
       for (const x of d.tokens || []) {
         m[x.symbol] = x.balance;
@@ -244,33 +244,42 @@ export default function BulkSend() {
       if (!wallet) throw new Error("Your wallet isn't ready yet");
       if (me?.wallet_address && wallet.address.toLowerCase() !== me.wallet_address.toLowerCase()) throw new Error("Wallet mismatch");
       const T = tokenBySymbol(tok)!;
-      const calls = plan.map((r) => ({ to: T.address, data: encodeTransfer(r.address, r.units) }));
-      const out: any = await sendTransaction({
-        transaction: { type: 118, chainId: CHAIN_ID, feeToken: T.address, calls },
-        wallet,
-      } as any);
-      if (!out?.hash) throw new Error("No transaction hash returned");
-      hash = out.hash;
-      setBatchHash(hash);
+      const results: any[] = [];
+      let stop = false;
+      for (let i = 0; i < plan.length; i++) {
+        const r0 = plan[i];
+        if (stop) { results.push({ status: "FAILED" }); continue; }
+        try {
+          const out: any = await sendTransaction(
+            { to: T.address, data: encodeTransfer(r0.address, r0.units), chainId: CHAIN_ID } as any,
+            { address: wallet.address } as any
+          );
+          if (!out?.hash) throw new Error("No transaction hash returned");
+          if (i === 0) setBatchHash(out.hash);
+          let d: any = {};
+          try {
+            const r = await api("/api/payments", {
+              method: "POST",
+              body: JSON.stringify({ txHash: out.hash, to: r0.address, amount: r0.amount, memo: r0.note || undefined, recipientEmail: r0.email, escrowId: r0.escrowId, token: T.address }),
+            });
+            d = await r.json();
+          } catch {}
+          results.push({ status: d.status || "SUBMITTED", id: d.id, hash: out.hash, explorerUrl: d.explorerUrl || "" });
+        } catch (e: any) {
+          stop = true;
+          results.push({ status: "FAILED" });
+          const detail = String(e?.shortMessage || e?.message || e).slice(0, 160);
+          setMsg(`Payment ${i + 1} of ${plan.length} was not sent, and the rest were skipped. [${detail}]`);
+        }
+      }
+      setResults(results);
+      setExplorer(results.find((x: any) => x.explorerUrl)?.explorerUrl || "");
     } catch (e: any) {
       const detail = String(e?.shortMessage || e?.message || e).slice(0, 220);
       setMsg(`We couldn't complete this payment. Your funds were not charged. [${detail}]`);
       setStep("review");
       return;
     }
-    try {
-      const r = await api("/api/payments/batch", {
-        method: "POST",
-        body: JSON.stringify({
-          txHash: hash,
-          token: tokenBySymbol(tok)?.address,
-          items: plan.map((x) => ({ to: x.address, amount: x.amount, memo: x.note || undefined, recipientEmail: x.email, escrowId: x.escrowId })),
-        }),
-      });
-      const d = await r.json();
-      setResults(d.items || []);
-      setExplorer(d.explorerUrl || "");
-    } catch {}
     setStep("done");
   }
 
@@ -297,7 +306,7 @@ export default function BulkSend() {
             <p className="sentlabel">{allOk ? "BATCH SENT ✓" : "BATCH SUBMITTED"}</p>
             <div className="sentamt">${money(planTotal)}</div>
             <p className="sentto">to <b>{plan.length} recipients</b></p>
-            <p className="sentfoot">{allOk ? "Confirmed on Arc · one transaction · one network fee" : "Arc is taking a moment to confirm. Check Activity shortly."}</p>
+            <p className="sentfoot">{allOk ? "Confirmed on Arc" : "Arc is taking a moment to confirm. Check Activity shortly."}</p>
           </div>
           <div className="list">
             {plan.map((r, i) => {
