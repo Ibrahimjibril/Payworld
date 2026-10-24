@@ -165,6 +165,7 @@ export default function Send() {
       const wallet: any = wallets.find((w: any) => w.walletClientType === "privy") ?? wallets[0];
       if (!wallet) throw new Error("Your wallet isn't ready yet");
       if (me?.wallet_address && wallet.address.toLowerCase() !== me.wallet_address.toLowerCase()) throw new Error("Wallet mismatch");
+      if (to.escrowId && T.symbol !== "USDC") throw new Error("Claim links support USDC only. Please choose USDC.");
       const out: any = await sendTransaction(
         { to: T.address, data: encodeTransfer(to.address, units), chainId: CHAIN_ID } as any,
         { address: wallet.address } as any

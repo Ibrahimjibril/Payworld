@@ -146,9 +146,10 @@ export async function POST(req: Request) {
       caip2: `eip155:${CHAIN_ID}`,
       params: {
         transaction: {
-          type: 118,
-          fee_token: tokenAddr,
-          calls: [{ to: tokenAddr, data: encodeTransfer(to, units - reserve) }],
+          to: tokenAddr,
+          data: encodeTransfer(to, units - reserve),
+          value: "0x0",
+          chain_id: CHAIN_ID,
         },
       },
     });

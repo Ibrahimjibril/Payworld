@@ -244,6 +244,7 @@ export default function BulkSend() {
       if (!wallet) throw new Error("Your wallet isn't ready yet");
       if (me?.wallet_address && wallet.address.toLowerCase() !== me.wallet_address.toLowerCase()) throw new Error("Wallet mismatch");
       const T = tokenBySymbol(tok)!;
+      if (plan.some((r: any) => r.escrowId) && T.symbol !== "USDC") throw new Error("Claim links support USDC only. Please choose USDC.");
       const results: any[] = [];
       let stop = false;
       for (let i = 0; i < plan.length; i++) {
