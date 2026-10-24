@@ -14,7 +14,7 @@ export default async function PublicProfile({ params }: { params: Promise<{ user
   if (!p) notFound();
   return (
     <main className="wrap center">
-      <a className="brand" href="/"><img src="/logo.svg" alt="" />CashPay</a>
+      <a className="brand" href="/"><img src="/logo.svg" alt="" />Payworld</a>
       <div style={{ marginTop: 20 }}><Avatar username={p.username} name={p.display_name} size={96} /></div>
       <h1 className="h-sm">{p.display_name}</h1>
       <p className="small">@{p.username}</p>

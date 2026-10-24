@@ -14,7 +14,7 @@ export async function POST(req: Request) {
   if (existing.length >= 5) return NextResponse.json({ error: "You already have the maximum number of fingerprints." }, { status: 400 });
 
   const options = await generateRegistrationOptions({
-    rpName: "CashPay",
+    rpName: "Payworld",
     rpID,
     userName: u[0].username,
     userDisplayName: u[0].display_name,

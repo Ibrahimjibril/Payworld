@@ -23,14 +23,14 @@ async function grab(url?: string): Promise<Buffer | null> {
 
 function buildHtml(p: P, bannerSrc?: string, xSrc?: string) {
   const claim = p.kind === "claim";
-  const button = claim ? `Claim your $${p.amount}` : "Open CashPay";
+  const button = claim ? `Claim your $${p.amount}` : "Open Payworld";
   const note = claim
     ? "Sign in with this email address to see your money. No crypto experience needed."
-    : "The money is already in your CashPay wallet.";
+    : "The money is already in your Payworld wallet.";
   const bSrc = bannerSrc ?? p.bannerUrl;
   const xs = xSrc ?? p.xIconUrl;
   const banner = bSrc
-    ? `<tr><td style="padding:0;font-size:0;line-height:0"><img src="${esc(bSrc)}" width="600" alt="${esc(`${p.from} sent you $${p.amount} on CashPay`)}" style="display:block;width:100%;max-width:600px;height:auto;border:0;outline:none"></td></tr>`
+    ? `<tr><td style="padding:0;font-size:0;line-height:0"><img src="${esc(bSrc)}" width="600" alt="${esc(`${p.from} sent you $${p.amount} on Payworld`)}" style="display:block;width:100%;max-width:600px;height:auto;border:0;outline:none"></td></tr>`
     : "";
   const memo = p.memo
     ? `<p style="margin:16px 0 0;padding:12px 16px;border-left:3px solid #19e3a5;background:#0e2a44;border-radius:8px;color:#eaf2f8;font-size:15px;line-height:1.5">“${esc(p.memo)}”</p>`
@@ -39,7 +39,7 @@ function buildHtml(p: P, bannerSrc?: string, xSrc?: string) {
     ? `<tr><td align="center" style="padding:4px 32px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;color:#8ba2b6">Button not working? Copy this link:<br><a href="${esc(p.link)}" style="color:#19e3a5;word-break:break-all">${esc(p.link)}</a></td></tr>`
     : "";
   const xbtn = xs
-    ? `<table role="presentation" align="center" cellpadding="0" cellspacing="0" style="margin:0 auto 14px"><tr><td><a href="https://x.com/CashPay_" target="_blank" style="text-decoration:none"><img src="${esc(xs)}" width="44" height="44" alt="X" style="display:block;border:0"></a></td></tr></table>`
+    ? `<table role="presentation" align="center" cellpadding="0" cellspacing="0" style="margin:0 auto 14px"><tr><td><a href="https://x.com/Payworld_" target="_blank" style="text-decoration:none"><img src="${esc(xs)}" width="44" height="44" alt="X" style="display:block;border:0"></a></td></tr></table>`
     : "";
 
   return `<!doctype html>
@@ -57,7 +57,7 @@ function buildHtml(p: P, bannerSrc?: string, xSrc?: string) {
 ${banner}
 <tr><td style="padding:30px 32px 6px;font-family:Arial,Helvetica,sans-serif;color:#ffffff">
 <h1 style="margin:0 0 10px;font-size:26px;line-height:1.25;color:#ffffff;font-weight:800">You received $${esc(p.amount)}</h1>
-<p style="margin:0;font-size:16px;line-height:1.6;color:#d5e3ec">${esc(p.from)} sent you $${esc(p.amount)} through CashPay.</p>
+<p style="margin:0;font-size:16px;line-height:1.6;color:#d5e3ec">${esc(p.from)} sent you $${esc(p.amount)} through Payworld.</p>
 ${memo}
 </td></tr>
 <tr><td align="center" style="padding:26px 32px 10px">
@@ -71,8 +71,8 @@ ${copy}
 <tr><td style="padding:22px 32px 28px;font-family:Arial,Helvetica,sans-serif">
 <div style="border-top:1px solid #143049;margin:0 0 16px;font-size:0;line-height:0">&nbsp;</div>
 ${xbtn}
-<p style="margin:0;text-align:center;font-size:12px;line-height:1.7;color:#6f879b"><b style="color:#19e3a5">CashPay</b> &middot; Money for the social internet<br>Powered by Tempo</p>
-<p style="margin:10px 0 0;text-align:center;font-size:11px;line-height:1.6;color:#6f879b">You are receiving this email because ${esc(p.from)} sent you a payment on CashPay.</p>
+<p style="margin:0;text-align:center;font-size:12px;line-height:1.7;color:#6f879b"><b style="color:#19e3a5">Payworld</b> &middot; Money for the social internet<br>Powered by Arc</p>
+<p style="margin:10px 0 0;text-align:center;font-size:11px;line-height:1.6;color:#6f879b">You are receiving this email because ${esc(p.from)} sent you a payment on Payworld.</p>
 </td></tr>
 </table>
 </td></tr>
@@ -93,10 +93,10 @@ async function viaResend(key: string, from: string, to: string, subject: string,
 
 export async function sendEmailDetailed(to: string, p: P): Promise<{ ok: boolean; error?: string }> {
   const claim = p.kind === "claim";
-  const subject = `${p.from} sent you a payment on CashPay`;
-  const button = claim ? `Claim your $${p.amount}` : "Open CashPay";
-  const note = claim ? "Sign in with this email address to see your money." : "The money is already in your CashPay wallet.";
-  const text = `${p.from} sent you $${p.amount} through CashPay.${p.memo ? `\n"${p.memo}"` : ""}\n\n${button}: ${p.link}\n\n${note}\n\nYou are receiving this email because ${p.from} sent you a payment on CashPay.`;
+  const subject = `${p.from} sent you a payment on Payworld`;
+  const button = claim ? `Claim your $${p.amount}` : "Open Payworld";
+  const note = claim ? "Sign in with this email address to see your money." : "The money is already in your Payworld wallet.";
+  const text = `${p.from} sent you $${p.amount} through Payworld.${p.memo ? `\n"${p.memo}"` : ""}\n\n${button}: ${p.link}\n\n${note}\n\nYou are receiving this email because ${p.from} sent you a payment on Payworld.`;
 
   // 1) Own domain through Resend (best deliverability) when both variables are set
   const rKey = process.env.RESEND_API_KEY;
@@ -119,7 +119,7 @@ export async function sendEmailDetailed(to: string, p: P): Promise<{ ok: boolean
         secure: true,
         auth: { user: gUser, pass: gPass.replace(/\s/g, "") },
       });
-      await t.sendMail({ from: `CashPay <${gUser}>`, replyTo: gUser, to, subject, html, text, attachments });
+      await t.sendMail({ from: `Payworld <${gUser}>`, replyTo: gUser, to, subject, html, text, attachments });
       return { ok: true };
     } catch (e: any) {
       console.error("gmail send failed", e);
@@ -128,6 +128,6 @@ export async function sendEmailDetailed(to: string, p: P): Promise<{ ok: boolean
   }
 
   // 3) Resend sandbox sender (only delivers to your own address)
-  if (rKey) return viaResend(rKey, "CashPay <onboarding@resend.dev>", to, subject, buildHtml(p), text);
+  if (rKey) return viaResend(rKey, "Payworld <onboarding@resend.dev>", to, subject, buildHtml(p), text);
   return { ok: false, error: "Email isn't set up yet: GMAIL_USER / GMAIL_APP_PASSWORD are missing in Vercel." };
 }

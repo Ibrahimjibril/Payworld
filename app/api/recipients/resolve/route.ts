@@ -13,7 +13,7 @@ export async function POST(req: Request) {
   if (!parsed.success) return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });
   const email = parsed.data.email;
 
-  // A registered CashPay user: the money goes straight to their wallet
+  // A registered Payworld user: the money goes straight to their wallet
   const rows = await sql`select username, wallet_address from users where lower(email) = ${email} and wallet_address is not null limit 1`;
   if (rows[0]) return NextResponse.json({ kind: "user", username: rows[0].username, address: rows[0].wallet_address });
 

@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "CashPay — Money for the social internet";
+export const alt = "Payworld — Money for the social internet";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -25,7 +25,7 @@ export default function Image() {
           <div style={{ display: "flex", fontSize: 52, fontWeight: 700, marginTop: 34, color: "#d6e8e2" }}>Money for the social internet.</div>
           <div style={{ display: "flex", fontSize: 32, marginTop: 14, color: "#8ba2b6" }}>Send money. Just like sending a message.</div>
           <div style={{ display: "flex", alignItems: "center", marginTop: 44 }}>
-            <div style={{ display: "flex", fontSize: 28, fontWeight: 800, padding: "14px 30px", borderRadius: 999, background: "rgba(25,227,165,0.14)", border: "2px solid rgba(25,227,165,0.7)", color: "#ffffff" }}>Powered by Tempo</div>
+            <div style={{ display: "flex", fontSize: 28, fontWeight: 800, padding: "14px 30px", borderRadius: 999, background: "rgba(25,227,165,0.14)", border: "2px solid rgba(25,227,165,0.7)", color: "#ffffff" }}>Powered by Arc</div>
             <div style={{ display: "flex", fontSize: 28, marginLeft: 26, color: "#8ba2b6" }}>www.cashpayt.xyz</div>
           </div>
         </div>

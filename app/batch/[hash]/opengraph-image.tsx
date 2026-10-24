@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { sql } from "@/lib/db";
 
-export const alt = "CashPay tips";
+export const alt = "Payworld tips";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -38,7 +38,7 @@ export default async function Image({ params }: { params: Promise<{ hash: string
               <path d="M42 22.5A14 14 0 1 0 42 41.5" fill="none" stroke="#0E7C66" strokeWidth="7" strokeLinecap="round" />
               <circle cx="46" cy="32" r="4.5" fill="#F5B731" />
             </svg>
-            <div style={{ display: "flex", fontSize: 42, fontWeight: 800, marginLeft: 18 }}>CashPay</div>
+            <div style={{ display: "flex", fontSize: 42, fontWeight: 800, marginLeft: 18 }}>Payworld</div>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", fontSize: 28, fontWeight: 800, letterSpacing: 4, color: "#c9f5e6" }}>{`TIPS FOR ${n} PEOPLE`}</div>
@@ -53,7 +53,7 @@ export default async function Image({ params }: { params: Promise<{ hash: string
           </div>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <div style={{ display: "flex", background: "#FFD66B", color: "#0b1b17", fontSize: 28, fontWeight: 800, padding: "12px 28px", borderRadius: 999 }}>Connect X to claim yours</div>
-            <div style={{ display: "flex", fontSize: 26, opacity: 0.9 }}>Powered by Tempo</div>
+            <div style={{ display: "flex", fontSize: 26, opacity: 0.9 }}>Powered by Arc</div>
           </div>
         </div>
       </div>

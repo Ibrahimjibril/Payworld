@@ -21,7 +21,7 @@ function friendly(e: any): string {
   const n = String(e?.name || "");
   const m = String(e?.message || "");
   if (n === "NotAllowedError" || /cancel|timed out|not allowed/i.test(m)) return "Fingerprint was cancelled or timed out. Please try again.";
-  if (n === "InvalidStateError") return "This device already has a CashPay fingerprint.";
+  if (n === "InvalidStateError") return "This device already has a Payworld fingerprint.";
   if (n === "NotSupportedError" || /not supported/i.test(m)) return "This device or browser doesn't support passkeys.";
   return "We couldn't verify your fingerprint. Please try again.";
 }
@@ -166,13 +166,13 @@ export default function PasskeyProvider({ children }: { children: ReactNode }) {
     <C.Provider value={{ status, confirmTx, enroll, remove }}>
       {children}
       {checking && (
-        <div className="lock"><img src="/logo.svg" alt="CashPay" width={76} height={76} className="cp-spin" /></div>
+        <div className="lock"><img src="/logo.svg" alt="Payworld" width={76} height={76} className="cp-spin" /></div>
       )}
       {needLock && (
         <div className="lock">
           <div className="box">
             <img src="/logo.svg" alt="" width={72} height={72} style={{ borderRadius: 18 }} />
-            <h1 style={{ margin: 0 }}>CashPay is locked</h1>
+            <h1 style={{ margin: 0 }}>Payworld is locked</h1>
             <p style={{ margin: 0, opacity: 0.8 }}>Use your fingerprint, face or screen lock to open the app.</p>
             <button className="cp-btn primary" style={{ minWidth: 220, minHeight: 52 }} disabled={busy} onClick={unlock}>
               {busy ? "Waiting for your fingerprint…" : "Unlock"}
@@ -188,7 +188,7 @@ export default function PasskeyProvider({ children }: { children: ReactNode }) {
             <img src="/logo.svg" alt="" width={72} height={72} style={{ borderRadius: 18 }} />
             <h1 style={{ margin: 0 }}>Set up your fingerprint lock</h1>
             <p style={{ margin: 0, opacity: 0.8 }}>
-              For your safety, CashPay asks for your fingerprint, face or screen lock every time you open the app and before every payment.
+              For your safety, Payworld asks for your fingerprint, face or screen lock every time you open the app and before every payment.
             </p>
             <button className="cp-btn primary" style={{ minWidth: 240, minHeight: 52 }} disabled={busy} onClick={enrollNow}>
               {busy ? "Please wait…" : "Set up fingerprint"}

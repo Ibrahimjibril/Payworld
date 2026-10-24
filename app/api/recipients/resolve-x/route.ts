@@ -13,7 +13,7 @@ export async function POST(req: Request) {
   if (!parsed.success) return NextResponse.json({ error: "Enter a valid X username." }, { status: 400 });
   const handle = parsed.data.handle.replace(/^@/, "");
 
-  // If this X account is linked to a CashPay wallet, the money goes straight to that wallet (no claim needed)
+  // If this X account is linked to a Payworld wallet, the money goes straight to that wallet (no claim needed)
   try {
     const linked = await sql`
       select id, username, display_name, wallet_address from users

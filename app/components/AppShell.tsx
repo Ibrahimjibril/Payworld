@@ -112,7 +112,7 @@ export default function AppShell({ children }: { children: ReactNode; badge?: nu
       {open && <div className="cp-overlay" onClick={() => setOpen(false)} />}
       <AboutModal open={about} onClose={() => setAbout(false)} />
       <aside className={`cp-side${open ? " open" : ""}`}>
-        <Link className="cp-logo" href="/dashboard" onClick={() => setOpen(false)}><img src="/logo.svg" alt="" />CashPay</Link>
+        <Link className="cp-logo" href="/dashboard" onClick={() => setOpen(false)}><img src="/logo.svg" alt="" />Payworld</Link>
         <nav className="cp-nav" aria-label="Main">
           {NAV.map((n) => (
             <Link key={n.href} href={n.href} className={path === n.href ? "active" : ""} onClick={() => setOpen(false)}>
@@ -150,7 +150,7 @@ export default function AppShell({ children }: { children: ReactNode; badge?: nu
           </button>
           <button className="cp-iconbtn" aria-label="Toggle theme" onClick={toggle}><Icon name="moon" /></button>
           <a className="cp-pill cp-hide-sm" href="https://explorer.arc.io" target="_blank" rel="noreferrer">
-            <img src="/tempo-icon.svg" alt="" width={20} height={20} style={{ borderRadius: 6 }} />{t("tempoNet")}<Icon name="chevR" size={16} />
+            <img src="/arc-icon.svg" alt="" width={20} height={20} style={{ borderRadius: 6 }} />{t("tempoNet")}<Icon name="chevR" size={16} />
           </a>
 
           {nOpen && (

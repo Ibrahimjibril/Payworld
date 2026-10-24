@@ -24,7 +24,7 @@ export default async function BatchPage({ params }: { params: Promise<{ hash: st
 
   return (
     <main className="wrap center">
-      <a className="brand" href="/"><img src="/logo.svg" alt="" />CashPay</a>
+      <a className="brand" href="/"><img src="/logo.svg" alt="" />Payworld</a>
       <p className="pill">{`TIPS FOR ${rows.length} PEOPLE`}</p>
       <div className="amt">${total}</div>
       <p className="small">From @{rows[0].sender} · {sym}</p>
@@ -42,7 +42,7 @@ export default async function BatchPage({ params }: { params: Promise<{ hash: st
           );
         })}
       </div>
-      {hasX ? <BatchClaim hash={hash.toLowerCase()} /> : <a className="btn primary" href="/login">Open CashPay</a>}
+      {hasX ? <BatchClaim hash={hash.toLowerCase()} /> : <a className="btn primary" href="/login">Open Payworld</a>}
     </main>
   );
 }

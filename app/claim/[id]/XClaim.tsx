@@ -58,7 +58,7 @@ export default function XClaim({ id, amount, handle, claimedAmount }: { id: stri
     return (
       <>
         <h1 className="h-sm">YOU CLAIMED ${received} 🎉</h1>
-        <p className="small">A small network fee was deducted. The money is now in your CashPay wallet.</p>
+        <p className="small">A small network fee was deducted. The money is now in your Payworld wallet.</p>
         <a className="btn primary" href="/dashboard">Open my wallet</a>
       </>
     );

@@ -6,21 +6,21 @@ const SITE = "https://www.cashpayt.xyz";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
-  title: "CashPay — Money for the social internet",
-  description: "Send stablecoin payments to anyone using their email, username, X handle or wallet — powered by Tempo.",
+  title: "Payworld — Money for the social internet",
+  description: "Send stablecoin payments to anyone using their email, username, X handle or wallet — powered by Arc.",
   icons: { icon: "/logo.svg" },
   openGraph: {
-    title: "CashPay — Send money. Just like sending a message.",
-    description: "Send stablecoin payments to anyone using their email, username, X handle or wallet — powered by Tempo.",
+    title: "Payworld — Send money. Just like sending a message.",
+    description: "Send stablecoin payments to anyone using their email, username, X handle or wallet — powered by Arc.",
     url: SITE,
-    siteName: "CashPay",
+    siteName: "Payworld",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@CashPay_",
-    title: "CashPay — Money for the social internet",
-    description: "Send money. Just like sending a message. Built on Tempo.",
+    site: "@Payworld_",
+    title: "Payworld — Money for the social internet",
+    description: "Send money. Just like sending a message. Built on Arc.",
   },
 };
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };

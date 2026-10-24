@@ -4,7 +4,7 @@ import { sql } from "@/lib/db";
 export async function generateMetadata({ params }: { params: Promise<{ hash: string }> }): Promise<Metadata> {
   const base = new URL(process.env.APP_URL || process.env.NEXT_PUBLIC_APP_URL || "https://www.cashpayt.xyz");
   const { hash } = await params;
-  let title = "Tips on CashPay";
+  let title = "Tips on Payworld";
   let description = "Claim your tip in seconds. Money for the social internet.";
   if (/^0x[0-9a-fA-F]{64}$/.test(hash)) {
     const rows = await sql`
@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ hash: str
       where p.tx_hash = ${hash.toLowerCase()}`;
     if (rows.length) {
       const total = rows.reduce((a: number, r: any) => a + Number(r.amount), 0).toFixed(2);
-      title = `$${total} in tips from @${rows[0].username} on CashPay`;
+      title = `$${total} in tips from @${rows[0].username} on Payworld`;
       description = `${rows.length} people were tipped. Connect X to claim yours.`;
     }
   }

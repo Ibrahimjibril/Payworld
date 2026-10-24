@@ -52,9 +52,9 @@ export default function Send() {
 
   function applyX(d: any) {
     if (d.kind === "user") {
-      setTo({ label: `@${d.username}`, sub: `X @${d.handle} · on CashPay · goes straight to their wallet`, address: d.address, tag: d.handle });
+      setTo({ label: `@${d.username}`, sub: `X @${d.handle} · on Payworld · goes straight to their wallet`, address: d.address, tag: d.handle });
     } else {
-      setTo({ label: `@${d.handle}`, sub: "Not on CashPay yet · they'll claim with X", address: d.address, x: d.handle, escrowId: d.escrowId });
+      setTo({ label: `@${d.handle}`, sub: "Not on Payworld yet · they'll claim with X", address: d.address, x: d.handle, escrowId: d.escrowId });
     }
   }
 
@@ -136,7 +136,7 @@ export default function Send() {
       const d = await r.json();
       if (!r.ok) { setMsg(d.error || "We couldn't prepare this payment."); }
       else if (d.kind === "user") setTo({ label: `@${d.username}`, sub: q, address: d.address });
-      else setTo({ label: q.toLowerCase(), sub: "New to CashPay. They'll get a claim link.", address: d.address, email: q.toLowerCase(), escrowId: d.escrowId });
+      else setTo({ label: q.toLowerCase(), sub: "New to Payworld. They'll get a claim link.", address: d.address, email: q.toLowerCase(), escrowId: d.escrowId });
     } catch { setMsg("We couldn't prepare this payment. Please try again."); }
     setBusy(false);
   }
@@ -205,16 +205,16 @@ export default function Send() {
   const isTip = memo.startsWith("Tip");
   const tagH = to?.x || to?.tag;
   const shareText = tagH
-    ? `I just tipped @${tagH} $${amount} on CashPay 💸${claimLink ? "\n\nClaim it here:" : ""}`
+    ? `I just tipped @${tagH} $${amount} on Payworld 💸${claimLink ? "\n\nClaim it here:" : ""}`
     : to?.email
-    ? `I just sent someone $${amount} on CashPay 💸\n\nClaim it here:`
-    : `I just sent $${amount} on CashPay 💸`;
+    ? `I just sent someone $${amount} on Payworld 💸\n\nClaim it here:`
+    : `I just sent $${amount} on Payworld 💸`;
   const shareUrl = claimLink || origin;
 
   return (
     <main className="wrap center">
       <BackButton />
-      <a className="brand" href="/dashboard"><img src="/logo.svg" alt="" />CashPay</a>
+      <a className="brand" href="/dashboard"><img src="/logo.svg" alt="" />Payworld</a>
 
       {step === "done" && done && (
         <>

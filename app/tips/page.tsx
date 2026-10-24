@@ -69,7 +69,7 @@ export default function Tips() {
   return (
     <main className="wrap center">
       <BackButton />
-      <a className="brand" href="/dashboard"><img src="/logo.svg" alt="" />CashPay</a>
+      <a className="brand" href="/dashboard"><img src="/logo.svg" alt="" />Payworld</a>
       <h1 className="h-sm">Tip someone you appreciate</h1>
       <div className="form">
         {picked ? (
@@ -86,7 +86,7 @@ export default function Tips() {
             {searched && results.length === 0 && HANDLE.test(q) && (
               <div className="card">
                 <b>@{q}</b>
-                <p className="small">You can tip any X account. If they've linked it to CashPay, the tip goes straight to their wallet. Otherwise they claim it by signing in with X.</p>
+                <p className="small">You can tip any X account. If they've linked it to Payworld, the tip goes straight to their wallet. Otherwise they claim it by signing in with X.</p>
                 <button className="btn primary" onClick={() => setPicked({ x: q.toLowerCase() })}>Tip @{q}</button>
               </div>
             )}

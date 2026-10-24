@@ -27,7 +27,7 @@ export default async function Claim({ params }: { params: Promise<{ id: string }
 
   return (
     <main className="wrap center">
-      <a className="brand" href="/"><img src="/logo.svg" alt="" />CashPay</a>
+      <a className="brand" href="/"><img src="/logo.svg" alt="" />Payworld</a>
       <p className="pill">{p.recipient_x ? `TIP FOR @${String(p.recipient_x).toUpperCase()}` : "YOU RECEIVED MONEY"}</p>
       <div className="amt">${amount}</div>
       <p className="small">From @{p.username}</p>

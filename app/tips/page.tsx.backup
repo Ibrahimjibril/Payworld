@@ -84,7 +84,7 @@ export default function Tips() {
 
   return (
     <main className="wrap center">
-      <a className="brand" href="/dashboard"><img src="/logo.svg" alt="" />CashPay</a>
+      <a className="brand" href="/dashboard"><img src="/logo.svg" alt="" />Payworld</a>
       <h1 className="h-sm">Tip someone you appreciate</h1>
       <div className="form">
         {picked ? (
@@ -92,7 +92,7 @@ export default function Tips() {
             {picked.kind === "cashpay" && (
               <div className="xconfirm">
                 <Avatar username={picked.username} name={picked.name} size={48} />
-                <span><b>@{picked.username}</b><span className="small" style={{ display: "block" }}>{picked.name} · on CashPay</span></span>
+                <span><b>@{picked.username}</b><span className="small" style={{ display: "block" }}>{picked.name} · on Payworld</span></span>
               </div>
             )}
             {picked.kind === "x" && (
@@ -101,7 +101,7 @@ export default function Tips() {
                   <XAvatar src={picked.x.avatar} size={56} />
                   <span>
                     <b>{picked.x.name}</b>
-                    <span className="small" style={{ display: "block" }}>@{picked.x.username}{picked.x.cashpay ? " · on CashPay" : " · not on CashPay yet"}</span>
+                    <span className="small" style={{ display: "block" }}>@{picked.x.username}{picked.x.cashpay ? " · on Payworld" : " · not on Payworld yet"}</span>
                   </span>
                 </div>
                 {!picked.confirmed ? (
@@ -115,7 +115,7 @@ export default function Tips() {
                   </>
                 ) : (
                   <>
-                    <p className="small">✓ Account confirmed. {picked.x.cashpay ? "The tip goes straight to their CashPay wallet." : "They'll claim it by signing in with X."}</p>
+                    <p className="small">✓ Account confirmed. {picked.x.cashpay ? "The tip goes straight to their Payworld wallet." : "They'll claim it by signing in with X."}</p>
                     <button className="btn" onClick={() => setPicked(null)}>Change</button>
                   </>
                 )}
@@ -134,7 +134,7 @@ export default function Tips() {
             <label>Search<input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="X name or @username" autoCapitalize="none" /></label>
             {busy && <p className="small">Searching…</p>}
 
-            {people.length > 0 && <div className="small" style={{ fontWeight: 700 }}>On CashPay</div>}
+            {people.length > 0 && <div className="small" style={{ fontWeight: 700 }}>On Payworld</div>}
             {people.map((p) => (
               <button type="button" key={p.username} className="xr" onClick={() => setPicked({ kind: "cashpay", username: p.username, name: p.display_name })}>
                 <Avatar username={p.username} name={p.display_name} size={44} />
@@ -147,7 +147,7 @@ export default function Tips() {
               <button type="button" key={u.id} className="xr" onClick={() => setPicked({ kind: "x", x: u, confirmed: false })}>
                 <XAvatar src={u.avatar} size={44} />
                 <span><b>{u.name}</b><small>@{u.username}</small></span>
-                {u.cashpay && <span className="tag">On CashPay</span>}
+                {u.cashpay && <span className="tag">On Payworld</span>}
               </button>
             ))}
 

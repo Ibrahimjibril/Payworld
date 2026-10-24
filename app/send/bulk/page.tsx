@@ -20,7 +20,7 @@ type Look = { cashpay: boolean; name?: string };
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const HANDLE = /^@?[A-Za-z0-9_]{1,15}$/;
-const KIND: Record<Kind, string> = { user: "CashPay", email: "Email · claim link", x: "X · claims with X", wallet: "Wallet" };
+const KIND: Record<Kind, string> = { user: "Payworld", email: "Email · claim link", x: "X · claims with X", wallet: "Wallet" };
 const short = (a: string) => `${a.slice(0, 6)}…${a.slice(-4)}`;
 const money = (u: bigint) => `${u / BigInt(1000000)}.${(u % BigInt(1000000)).toString().padStart(6, "0").slice(0, 2)}`;
 const isFilled = (r: In) => r.to.trim() !== "" || r.amount.trim() !== "" || r.note.trim() !== "";
@@ -92,7 +92,7 @@ export default function BulkSend() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready, authenticated]);
 
-  // checks (cheaply) which @names are CashPay users, so the sender sees who they are paying
+  // checks (cheaply) which @names are Payworld users, so the sender sees who they are paying
   useEffect(() => {
     const keys = Array.from(new Set(rows.map((r) => classify(r.to)).filter((c) => c.kind === "handle").map((c) => c.key)))
       .filter((k) => !(k in look))
@@ -298,7 +298,7 @@ export default function BulkSend() {
   return (
     <main className="wrap center">
       <BackButton />
-      <a className="brand" href="/dashboard"><img src="/logo.svg" alt="" />CashPay</a>
+      <a className="brand" href="/dashboard"><img src="/logo.svg" alt="" />Payworld</a>
 
       {step === "done" && (
         <>
@@ -321,7 +321,7 @@ export default function BulkSend() {
                     <div className="cta" style={{ marginTop: 8 }}>
                       <button className="btn" onClick={() => { navigator.clipboard.writeText(link); setCopied(i); setTimeout(() => setCopied(-1), 1500); }}>{copied === i ? "Copied ✓" : "Copy claim link"}</button>
                       {r.kind === "x" && (
-                        <a className="btn" target="_blank" rel="noreferrer" href={`https://x.com/intent/post?text=${encodeURIComponent(`I just tipped @${r.x} $${r.amount} on CashPay 💸\n\nClaim it here:`)}&url=${encodeURIComponent(toSite(link))}`}>Share on X</a>
+                        <a className="btn" target="_blank" rel="noreferrer" href={`https://x.com/intent/post?text=${encodeURIComponent(`I just tipped @${r.x} $${r.amount} on Payworld 💸\n\nClaim it here:`)}&url=${encodeURIComponent(toSite(link))}`}>Share on X</a>
                       )}
                     </div>
                   )}
@@ -437,7 +437,7 @@ export default function BulkSend() {
                   />
                   {c.kind === "wallet" && <span className="bk-chip info">Wallet · {short(r.to.trim())}</span>}
                   {c.kind === "email" && <span className="bk-chip info">Email · they'll get a claim link</span>}
-                  {c.kind === "handle" && lk?.cashpay && <span className="bk-chip ok">On CashPay ✓ {lk.name || ""}</span>}
+                  {c.kind === "handle" && lk?.cashpay && <span className="bk-chip ok">On Payworld ✓ {lk.name || ""}</span>}
                   {c.kind === "handle" && lk && !lk.cashpay && <span className="bk-chip info">X account · claims by signing in with X</span>}
                   {c.kind === "handle" && !lk && <span className="bk-chip mute">Checking…</span>}
                   {vis && v.err && <span className="bk-err">{v.err}</span>}

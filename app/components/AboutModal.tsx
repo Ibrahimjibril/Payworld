@@ -9,11 +9,11 @@ export default function AboutModal({ open, onClose }: { open: boolean; onClose: 
   const { t } = useI18n();
   if (!open) return null;
   return (
-    <div className="cp-modal-bg" onClick={onClose} role="dialog" aria-modal="true" aria-label="About CashPay">
+    <div className="cp-modal-bg" onClick={onClose} role="dialog" aria-modal="true" aria-label="About Payworld">
       <div className="cp-modal wide cp-about" onClick={(e) => e.stopPropagation()}>
         <div className="ab-head">
           <img src="/logo.svg" alt="" width={44} height={44} style={{ borderRadius: 12 }} />
-          <div className="ab-title"><b>CashPay</b><span>{t("abTag")}</span></div>
+          <div className="ab-title"><b>Payworld</b><span>{t("abTag")}</span></div>
           <button className="cp-iconbtn" aria-label="Close" onClick={onClose}><Icon name="close" /></button>
         </div>
 
@@ -56,7 +56,7 @@ export default function AboutModal({ open, onClose }: { open: boolean; onClose: 
         <div className="ab-cta">
           <Link className="cp-btn primary" href="/send" onClick={onClose}>{t("qSend")}</Link>
           <Link className="cp-btn" href="/tips" onClick={onClose}>{t("qTip")}</Link>
-          <a className="cp-btn ghost" href="https://x.com/CashPay_" target="_blank" rel="noreferrer">{t("abFollow")}</a>
+          <a className="cp-btn ghost" href="https://x.com/Payworld_" target="_blank" rel="noreferrer">{t("abFollow")}</a>
         </div>
       </div>
     </div>

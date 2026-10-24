@@ -155,7 +155,7 @@ export default function Dashboard() {
   if (needs && ready && authenticated) {
     return (
       <main className="wrap center">
-        <a className="brand" href="/"><img src="/logo.svg" alt="" />CashPay</a>
+        <a className="brand" href="/"><img src="/logo.svg" alt="" />Payworld</a>
         <h1 className="h-sm">Choose your username</h1>
         <p className="lead">This is how people will find and pay you.</p>
         <div className="form">
@@ -198,7 +198,7 @@ export default function Dashboard() {
             </div>
           )}
           <a className="cp-pill" href={d.explorerUrl} target="_blank" rel="noreferrer">
-            <img src="/tempo-icon.svg" alt="" width={20} height={20} style={{ borderRadius: 6 }} />{t("tempoNet")}<Icon name="chevR" size={16} />
+            <img src="/arc-icon.svg" alt="" width={20} height={20} style={{ borderRadius: 6 }} />{t("tempoNet")}<Icon name="chevR" size={16} />
           </a>
         </div>
       </div>

@@ -1,103 +1,91 @@
-const XIcon = () => (<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>);
 const steps = [
-  ["01", "Choose who to pay", "Email, @username or wallet."],
-  ["02", "Enter amount", "Pick a quick amount or type your own."],
-  ["03", "Send", "Confirm once. Network fee shown upfront."],
-  ["04", "They get notified", "An email lands with a claim button."],
-  ["05", "They claim", "Google or wallet. Money is theirs."],
+  { n: "1", t: "Sign in", d: "Use your email or Google. A secure wallet is created for you in seconds." },
+  { n: "2", t: "Add USDC", d: "Receive USDC or EURC on Arc to your Payworld address." },
+  { n: "3", t: "Send to anyone", d: "Pay by email, @username or wallet. New to Payworld? They claim it with a link." },
 ];
-const uses = ["Creator tips", "Freelancer payments", "Community rewards", "Global payments", "Micro-payments", "Digital gifts", "Remote work", "Online communities", "AI/agent payments"];
+const feats = [
+  { t: "Fast", d: "Payments settle in seconds on Arc." },
+  { t: "Low fees", d: "Gas is paid in USDC, so costs stay predictable." },
+  { t: "Secure", d: "Your wallet is protected by Privy. Your funds, your control." },
+  { t: "Global", d: "Pay anyone, anywhere, with a username or a link." },
+];
 
 export default function Home() {
   return (
-    <main>
-      <div className="wrap">
-        <nav className="nav" aria-label="Main">
-          <a className="brand" href="/"><img src="/logo.svg" alt="" />CashPay</a>
-          <div className="nav-links">
-            <a href="#pay">Pay anyone</a><a href="#tips">Tips</a><a href="#tempo">Tempo</a><a href="#how">How it works</a>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}><a className="xbtn" href="https://x.com/CashPay_" target="_blank" rel="noreferrer" aria-label="CashPay on X"><XIcon /></a><a className="btn primary" href="/login">Start Sending</a></div>
+    <main className="pw">
+      <div className="pw-wrap">
+        <nav className="pw-nav">
+          <a className="pw-brand" href="/"><img src="/logo.svg" alt="" />Payworld</a>
+          <div className="pw-links"><a href="#how">How it works</a><a href="#why">Why Payworld</a><a href="#arc">Arc</a></div>
+          <a className="pw-btn gold" href="/login">Open app</a>
         </nav>
 
-        <div className="hero">
+        <section className="pw-hero">
           <div>
-            <span className="pill">Money for the social internet</span>
-            <h1>Send money. <span>Just like sending a message.</span></h1>
-            <p className="lead">Send stablecoin payments to anyone using their email, username, or wallet — powered by Tempo.</p>
-            <div className="cta">
-              <a className="btn primary" href="/login">Start Sending</a>
-              <a className="btn" href="#how">See How It Works</a>
+            <span className="pw-pill">Live on Arc Mainnet</span>
+            <h1>Send money like you send a <span>message.</span></h1>
+            <p className="pw-lead">Fast, borderless USDC payments on Arc. Pay anyone by email, @username or wallet. No crypto knowledge needed.</p>
+            <div className="pw-cta">
+              <a className="pw-btn gold" href="/login">Get started</a>
+              <a className="pw-btn" href="#how">How it works</a>
             </div>
+            <div className="pw-chips"><span>USDC</span><span>EURC</span><span>Email</span><span>@username</span></div>
           </div>
-          <div className="stage" aria-hidden="true">
-            <div className="phone">
-              <div className="row"><div className="avatar">A</div><div><b>Alice</b><div className="small">to @sarah</div></div></div>
-              <div className="amt">$20.00</div>
-              <div className="ok">✓ Payment confirmed</div>
-              <div className="small">Tempo</div>
+          <div className="pw-phone">
+            <div className="pw-bal">
+              <small>Total balance</small>
+              <b>$248.32</b>
+              <em>+2.4% this week</em>
             </div>
-            <div className="phone b">
-              <div className="small">CashPay</div>
-              <div className="amt">You received $20</div>
-              <div className="small">Alice sent you money.</div>
-              <div className="cta"><span className="btn primary">Claim $20</span></div>
-            </div>
+            <div className="pw-tx"><span className="dot up" /><div><b>@mariam</b><small>Received</small></div><i className="pos">+$120.00</i></div>
+            <div className="pw-tx"><span className="dot dn" /><div><b>@john_doe</b><small>Sent</small></div><i>-$50.00</i></div>
+            <div className="pw-tx"><span className="dot dn" /><div><b>@techguy</b><small>Sent</small></div><i>-$25.00</i></div>
+            <small className="pw-ex">Example preview</small>
           </div>
-        </div>
+        </section>
       </div>
 
-      <section><div className="wrap">
-        <h2>Money should be as easy to send as a message.</h2>
-        <p className="lead">No wallet address required. No crypto complexity. Just choose who you want to pay.</p>
-      </div></section>
-
-      <section id="pay"><div className="wrap">
-        <h2>Pay anyone.</h2>
-        <div className="grid c3">
-          <div className="card"><h3>Email</h3><p>Send to sarah@gmail.com even if she has never used CashPay.</p></div>
-          <div className="card"><h3>Username</h3><p>Search @john and pay in seconds.</p></div>
-          <div className="card"><h3>Wallet</h3><p>Paste an address for Web3-native friends. One payment experience.</p></div>
+      <section id="how" className="pw-sec">
+        <div className="pw-wrap">
+          <h2>How it works</h2>
+          <div className="pw-grid3">
+            {steps.map((s) => (
+              <div className="pw-card" key={s.n}><span className="pw-num">{s.n}</span><h3>{s.t}</h3><p>{s.d}</p></div>
+            ))}
+          </div>
         </div>
-      </div></section>
+      </section>
 
-      <section><div className="wrap">
-        <h2>Unclaimed money isn’t lost.</h2>
-        <p className="lead">Send → email notification → claim link → connect wallet or Google → money received.</p>
-      </div></section>
-
-      <section id="tips"><div className="wrap">
-        <h2>Tip anyone you appreciate.</h2>
-        <p className="lead">Search @username, choose $5, $10, $20 or $50, send, then share on X.</p>
-        <div className="chips"><span className="chip">$5</span><span className="chip">$10</span><span className="chip">$20</span><span className="chip">$50</span></div>
-      </div></section>
-
-      <section id="tempo"><div className="wrap">
-        <h2>Powered by Tempo.</h2>
-        <p className="lead">Tempo is a payment-focused, EVM-compatible blockchain built around stablecoins and the TIP-20 token standard, designed for fast settlement and a predictable payment experience.</p>
-      </div></section>
-
-      <section><div className="wrap">
-        <h2>Made for real life.</h2>
-        <div className="chips">{uses.map((u) => <span className="chip" key={u}>{u}</span>)}</div>
-      </div></section>
-
-      <section id="how"><div className="wrap">
-        <h2>How it works</h2>
-        <div className="grid c5">
-          {steps.map(([n, t, d]) => (
-            <div className="card" key={n}><div className="num">{n}</div><h3>{t}</h3><p>{d}</p></div>
-          ))}
+      <section id="why" className="pw-sec">
+        <div className="pw-wrap">
+          <h2>Why Payworld</h2>
+          <div className="pw-grid4">
+            {feats.map((f) => (
+              <div className="pw-card" key={f.t}><h3>{f.t}</h3><p>{f.d}</p></div>
+            ))}
+          </div>
         </div>
-      </div></section>
+      </section>
 
-      <div className="wrap">
-        <div className="final">
-          <h2>Your money. Your people.<br />One simple payment layer.</h2>
-          <a className="btn" href="/login">Start Sending</a>
+      <section id="arc" className="pw-sec">
+        <div className="pw-wrap">
+          <div className="pw-card pw-arc">
+            <h2>Built on Arc</h2>
+            <p>Arc is Circle&apos;s EVM-compatible blockchain designed for stablecoin payments, with gas paid in USDC. Payworld uses it to move USDC and EURC quickly and cheaply.</p>
+          </div>
         </div>
-        <footer><span>© CashPay</span><a className="xbtn" href="https://x.com/CashPay_" target="_blank" rel="noreferrer" aria-label="CashPay on X"><XIcon /></a><span>Built on Tempo</span></footer>
-      </div>
+      </section>
+
+      <section className="pw-sec">
+        <div className="pw-wrap">
+          <div className="pw-final">
+            <h2>Start sending today</h2>
+            <p>Create your account in under a minute.</p>
+            <a className="pw-btn gold" href="/login">Open Payworld</a>
+          </div>
+          <footer className="pw-foot"><span>© Payworld</span><span>Built on Arc</span></footer>
+        </div>
+      </section>
     </main>
   );
 }

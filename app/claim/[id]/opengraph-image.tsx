@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { sql } from "@/lib/db";
 
-export const alt = "CashPay payment";
+export const alt = "Payworld payment";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -26,7 +26,7 @@ export default async function Image({ params }: { params: Promise<{ id: string }
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#0E7C66", color: "#ffffff", padding: 64 }}>
         <div style={{ display: "flex", alignItems: "center" }}>
           <div style={{ display: "flex", width: 72, height: 72, borderRadius: 20, background: "#ffffff", color: "#0E7C66", fontSize: 52, fontWeight: 900, alignItems: "center", justifyContent: "center" }}>C</div>
-          <div style={{ display: "flex", fontSize: 44, fontWeight: 800, marginLeft: 20 }}>CashPay</div>
+          <div style={{ display: "flex", fontSize: 44, fontWeight: 800, marginLeft: 20 }}>Payworld</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", fontSize: 34, fontWeight: 800, letterSpacing: 4 }}>{label}</div>
@@ -36,7 +36,7 @@ export default async function Image({ params }: { params: Promise<{ id: string }
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", background: "#FFD66B", color: "#0b1b17", fontSize: 32, fontWeight: 800, padding: "14px 28px", borderRadius: 999 }}>Claim it in seconds</div>
-          <div style={{ display: "flex", fontSize: 30, opacity: 0.9 }}>Powered by Tempo</div>
+          <div style={{ display: "flex", fontSize: 30, opacity: 0.9 }}>Powered by Arc</div>
         </div>
       </div>
     ),

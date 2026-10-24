@@ -173,7 +173,7 @@ export default function ProfilePage() {
       <div className="cp-welcome">
         <div>
           <h1>Your <span>Profile</span></h1>
-          <p>This is how people see you on CashPay.</p>
+          <p>This is how people see you on Payworld.</p>
         </div>
       </div>
 
@@ -194,7 +194,7 @@ export default function ProfilePage() {
         <div className="cp-ph"><h2>Security</h2></div>
         {pk.status === "enrolled" ? (
           <>
-            <p style={{ margin: 0 }}>✓ <b>Fingerprint lock is ON.</b> CashPay asks for your fingerprint, face or screen lock every time you open the app and before every payment.</p>
+            <p style={{ margin: 0 }}>✓ <b>Fingerprint lock is ON.</b> Payworld asks for your fingerprint, face or screen lock every time you open the app and before every payment.</p>
             {!REQUIRE_PASSKEY && (
               <div style={{ marginTop: 12 }}>
                 <button className="cp-btn ghost" disabled={pbusy} onClick={turnOff}>{pbusy ? "Please wait…" : "Turn off fingerprint lock"}</button>
@@ -204,7 +204,7 @@ export default function ProfilePage() {
         ) : (
           <>
             <p className="cp-muted" style={{ marginTop: 0 }}>
-              Lock CashPay with your fingerprint, face or screen lock (a passkey). It will be asked every time you open the app and before every payment.
+              Lock Payworld with your fingerprint, face or screen lock (a passkey). It will be asked every time you open the app and before every payment.
             </p>
             <button className="cp-btn primary" disabled={pbusy} onClick={turnOn}>{pbusy ? "Please wait…" : "Set up fingerprint lock"}</button>
           </>
@@ -215,11 +215,11 @@ export default function ProfilePage() {
       <div className="cp-panel" style={{ marginTop: 14 }}>
         <div className="cp-ph"><h2>Linked X account</h2></div>
         {xl ? (
-          <p style={{ margin: 0 }}>✓ Linked to <b>@{xl}</b>. Tips sent to your @handle now go straight into your CashPay wallet, with no claim link.</p>
+          <p style={{ margin: 0 }}>✓ Linked to <b>@{xl}</b>. Tips sent to your @handle now go straight into your Payworld wallet, with no claim link.</p>
         ) : (
           <>
             <p className="cp-muted" style={{ marginTop: 0 }}>
-              Link your X account so tips sent to your @handle go straight into your CashPay wallet. No claim link needed.
+              Link your X account so tips sent to your @handle go straight into your Payworld wallet. No claim link needed.
             </p>
             <button className="cp-btn primary" disabled={xbusy} onClick={() => { setXbusy(true); setXmsg(""); linkTwitter(); }}>
               {xbusy ? "Opening X…" : "Link X account"}

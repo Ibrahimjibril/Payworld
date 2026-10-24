@@ -36,7 +36,7 @@ export async function GET(req: Request) {
               <path d="M42 22.5A14 14 0 1 0 42 41.5" fill="none" stroke="#0E7C66" strokeWidth="7" strokeLinecap="round" />
               <circle cx="46" cy="32" r="4.5" fill="#F5B731" />
             </svg>
-            <div style={{ display: "flex", fontSize: 46, fontWeight: 800, marginLeft: 20 }}>CashPay</div>
+            <div style={{ display: "flex", fontSize: 46, fontWeight: 800, marginLeft: 20 }}>Payworld</div>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", fontSize: 30, fontWeight: 800, letterSpacing: 5, color: "#c9f5e6" }}>{label}</div>
@@ -46,7 +46,7 @@ export async function GET(req: Request) {
           </div>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <div style={{ display: "flex", background: "#FFD66B", color: "#0b1b17", fontSize: 30, fontWeight: 800, padding: "14px 30px", borderRadius: 999 }}>Claim it in seconds</div>
-            <div style={{ display: "flex", fontSize: 28, opacity: 0.9 }}>Powered by Tempo</div>
+            <div style={{ display: "flex", fontSize: 28, opacity: 0.9 }}>Powered by Arc</div>
           </div>
         </div>
       </div>

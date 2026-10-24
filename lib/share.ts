@@ -15,6 +15,6 @@ export function tweetChunks(handles: string[], budget = 200): string[][] {
 }
 
 export function tweetHref(tags: string[], link: string) {
-  const text = `I just tipped ${tags.join(" ")} on CashPay 💸\n\nClaim it here:`;
+  const text = `I just tipped ${tags.join(" ")} on Payworld 💸\n\nClaim it here:`;
   return `https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(link)}`;
 }

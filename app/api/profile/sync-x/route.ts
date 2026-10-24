@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { sql } from "@/lib/db";
 import { getPrivy, getUserId } from "@/lib/auth";
 
-// Which X account (if any) is linked to this CashPay wallet
+// Which X account (if any) is linked to this Payworld wallet
 export async function GET(req: Request) {
   const userId = await getUserId(req);
   if (!userId) return NextResponse.json({ error: "Please sign in." }, { status: 401 });
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     if (!rows[0]) return NextResponse.json({ error: "Finish setting up your profile first." }, { status: 404 });
     return NextResponse.json({ x: { username: rows[0].x_username } });
   } catch (e: any) {
-    if (e?.code === "23505") return NextResponse.json({ error: "This X account is already linked to another CashPay user." }, { status: 409 });
+    if (e?.code === "23505") return NextResponse.json({ error: "This X account is already linked to another Payworld user." }, { status: 409 });
     console.error("sync-x failed", e);
     return NextResponse.json({ error: "We couldn't link your X account. Please try again." }, { status: 500 });
   }
