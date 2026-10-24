@@ -5,6 +5,7 @@ import { PrivyProvider } from "@privy-io/react-auth";
 import { defineChain } from "viem";
 import { I18nProvider } from "@/lib/i18n";
 import PasskeyProvider from "@/app/components/PasskeyProvider";
+import StudioWatermark from "@/app/components/StudioWatermark";
 
 // Arc mainnet (Circle). Gas is paid in USDC (18 decimals natively, 6 via the ERC-20 interface).
 const arcChain: any = defineChain({
@@ -51,6 +52,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       <I18nProvider>
         <FastLinks />
         <PasskeyProvider>{children}</PasskeyProvider>
+        <StudioWatermark />
       </I18nProvider>
     </PrivyProvider>
   );
