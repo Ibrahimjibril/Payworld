@@ -16,7 +16,7 @@ const arcChain: any = defineChain({
 });
 
 const config: any = {
-  loginMethods: ["email", "google"],
+  loginMethods: ["email", "google", "twitter", "wallet"],
   embeddedWallets: {
     createOnLogin: "users-without-wallets",
     ethereum: { createOnLogin: "users-without-wallets" },
